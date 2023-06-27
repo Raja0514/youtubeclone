@@ -1,40 +1,41 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import logo from "../images/youtubelogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { toogglemenu } from "../utils/appslice";
-import { Link } from "react-router-dom";
-
+import { newmenu } from "../utils/appslice";
 
 const Head = () => {
+
   const dispatch = useDispatch();
 
-  function togglemenu() {
-    dispatch(toogglemenu());
-  }
+  const togglemenu=useCallback(()=>{
+    dispatch(newmenu())
+  },[dispatch]);
+
+  useEffect(() => {
+    togglemenu();
+  }, [togglemenu]);
+
+  
+
+
   return (
     <>
       <div className="grid grid-flow-col pt-3 py-3 shadow-lg  text-center">
         <div className="flex col-span-1">
-
           <FontAwesomeIcon
             icon={faBars}
             size="xl"
             className="mx-3 cursor-pointer "
             onClick={togglemenu}
           />
-       
-       
-       <img src={logo} alt="log" className="h-7 mx-3 cursor-pointer" />
 
-     
-                   
-          
+          <img src={logo} alt="log" className="h-7 mx-3 cursor-pointer" />
         </div>
-       
+
         <div className="col-span-10">
           <input
             type="text"
