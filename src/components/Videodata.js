@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../utils/constant";
 import Videocard from "./Videocard";
 import { Link } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const Videodata = () => {
   const [videos, setvideos] = useState([]);
@@ -14,26 +15,29 @@ const Videodata = () => {
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();
     // console.log("video data", json.items);
-    setvideos(json.items)
+    setvideos(json.items);
+    
   }
 
-  return(
+  if(videos.length===0) return <Shimmer/>
+
+
+
+  return (
     <>
-    <div className="flex flex-wrap">
-      {
-        videos.map((video)=>{
-          return(
+      <div className="flex flex-wrap">
+        {videos.map((video) => {
+          return (
             <>
-            <Link to={"/watch?v="+video.id}><Videocard key={video.id} info={video}/></Link>
-            
+              <Link to={"/watch?v=" + video.id}>
+                <Videocard key={video.id} info={video} />
+              </Link>
             </>
-          )
-        })
-      }
-      
-    </div>
+          );
+        })}
+      </div>
     </>
-  )
+  );
 };
 
 export default Videodata;
