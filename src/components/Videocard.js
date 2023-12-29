@@ -1,6 +1,7 @@
 import React from "react";
 
 const Videocard = (props) => {
+
   const data = props.info;
 
   console.log("video props", data);
@@ -13,11 +14,9 @@ const Videocard = (props) => {
 
   const channeltitle = props.info.snippet.channelTitle;
 
-  
-
   return (
     <>
-      <div className="p-3 mx-2 w-72 shadow-lg">
+      <div className="p-3 mx-1 w-56  shadow-lg">
         <img src={imageurl} alt="url" className="rounded-lg" />
         <ul>
           <li className="font-medium">{channeltitle}</li>
@@ -30,3 +29,13 @@ const Videocard = (props) => {
 };
 
 export default Videocard;
+
+export const Bluebordervideocard = ({ info }) => {
+  return (
+    <div className="mx-1 border-double border-8 border-indigo-600 bg-neutral-600">
+      {" "}
+      <Videocard info={info} />{" "}
+      <h1 className="mx-5 font-bold">This is an HOC Component</h1>
+    </div>
+  );
+};

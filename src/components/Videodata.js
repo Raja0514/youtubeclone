@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../utils/constant";
-import Videocard from "./Videocard";
+import Videocard,{Bluebordervideocard} from "./Videocard";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
@@ -26,6 +26,7 @@ const Videodata = () => {
   return (
     <>
       <div className="flex flex-wrap">
+        {videos[0]&&<Bluebordervideocard info={videos[0]}/>}
         {videos.map((video) => {
           return (
             <>

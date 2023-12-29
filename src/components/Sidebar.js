@@ -9,7 +9,7 @@ const isMenuOpen=useSelector((store)=>store.app.isMenuOpen)
 
 if(!isMenuOpen)return null
   return (
-    <div className="pl-3 shadow-lg w-32 h-screen pt-3">
+    <div className="pl-3 shadow-lg w-36 mx-3  h-screen pt-3 bg-red-300 ">
       <ul>
         <Link to="/">
         <li className="text-base  text-gray-900 dark:text-white ">Home</li>
